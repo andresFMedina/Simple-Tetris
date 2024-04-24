@@ -27,6 +27,11 @@ public class Shape : MonoBehaviour
         Move(Vector3.right);
     }
 
+    public void MoveUp()
+    {
+        Move(Vector3.up);
+    }
+
     public void MoveDown()
     {
         Move(Vector3.down);
