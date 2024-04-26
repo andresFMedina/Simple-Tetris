@@ -58,7 +58,6 @@ public class SoundManager : MonoBehaviour
         _musicSource.volume = _musicVolume;
         _musicSource.loop = true;
         _musicSource.Play();
-        print("No Error");
     }
 
     public void UpdateMusic()

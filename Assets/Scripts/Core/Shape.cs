@@ -5,6 +5,8 @@ using UnityEngine;
 public class Shape : MonoBehaviour
 {
     [SerializeField] private bool canRotate = true;
+    [SerializeField] public Vector3 queueOffset = Vector2.zero;
+    
 
     // Start is called before the first frame update
     void Start()

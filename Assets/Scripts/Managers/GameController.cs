@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     Board _gameBoard;
     Spawner _spawner;
     Shape _activeShape;
+    Ghost _ghost;
     [SerializeField] GameObject _gameOverPanel;
 
 
@@ -48,6 +49,7 @@ public class GameController : MonoBehaviour
         _spawner = FindObjectOfType<Spawner>();
         _soundManager = FindObjectOfType<SoundManager>();
         _scoreManager = FindObjectOfType<ScoreManager>();
+        _ghost = FindObjectOfType<Ghost>();
 
         _timeToNextKeyHorizontal = Time.time;
         _timeToNextKeyRotate = Time.time;
@@ -77,6 +79,11 @@ public class GameController : MonoBehaviour
         if (_isGameOver) return;
 
         PlayerInput();
+    }
+
+    void LateUpdate()
+    {
+        _ghost.DrawShape(_activeShape, _gameBoard);
     }
 
     private void PlayerInput()
@@ -166,6 +173,8 @@ public class GameController : MonoBehaviour
     {
         _activeShape.MoveUp();
         _gameBoard.StoreShapeInGrid(_activeShape);
+
+        _ghost.ResetShape();
 
         PlaySound(_soundManager.DropSound, 0.50f);
 
